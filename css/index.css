@@ -1,0 +1,38 @@
+body{
+    font:"microsoft YaHei", "arial", "sans-serif";
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.asidemenu{
+    position: fixed;
+    height: 80%;
+    width: 200px;
+    border-bottom: 1px solid #dddddd;
+}
+.asidemenu ul{
+    width: 100%;
+    height: 100%;
+    overflow-y:scroll;
+    margin: 0;
+    padding-left: 0;
+}
+.asidemenu ul li{
+    width: 100%;
+    height: 30px;
+    list-style: none;
+    border-bottom: 1px solid #c1c1c1;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.asidemenu ul li:hover{
+    background-color: #dddddd;
+}
+.index_nav{
+    position: relative;
+    border-bottom: 1px solid #dddddd;
+    height: 30px;
+    line-height: 30px;
+}
+
