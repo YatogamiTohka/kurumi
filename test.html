@@ -1,10 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+    <style>
+        div{
+            background-color: #09151d;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
 </head>
 <body>
-
+<div id="div1"></div>
+<script>
+    /**首先是具体的功能函数**/
+    var order500=function( orderType, pay, num ){
+        if ( orderType === 1 && pay === true ){    //如果是500订单且已经付款
+            console.log( '500元定金预购, 得到100优惠券' );
+        }else{
+            return "next"    //统一规定的执行结果
+        }
+    };
+    var order200=function( orderType, pay, num ){
+        if ( orderType === 2 && pay === true ){    //如果是200订单且已经付款
+            console.log( '200元定金预购, 得到50优惠券' );
+        }else{
+            return "next"
+        }
+    };
+    var orderNormal=function( orderType, pay, num ){
+        if ( num > 0 ){             //普通购买，如果数量足够
+            console.log( '普通购买, 无优惠券' );
+        }else{
+            console.log( '手机库存不足' );
+        }
+    }
+    /**闭包创建一个类，实例职责对象，参数就是上面的功能函数**/
+    var order=(function(){
+        var constructor=function( fn ){  //构造器，存储当前的函数和后面委托的对象
+            this.fn=fn;
+            this.next=null;
+        }
+        constructor.prototype.setnext=function( nextobj ){ //设定委托的对象
+            return this.next=nextobj;
+        }
+        constructor.prototype.do=function(){  //执行函数
+            var result=this.fn.apply(null,arguments);  //获得执行结果
+            if( result==="next" ){  //当执行结果为规定值时
+                return this.do.apply(this.next,arguments);  //委托对象执行函数
+            }
+            return result;
+        }
+        return constructor;
+    })();
+    var order_500=new order( order500 );
+    var order_200=new order( order200 );
+    var order_normal=new order( orderNormal );
+    order_500.setnext( order_200 );
+    order_200.setnext( order_normal );
+    order_500.do( 2, true, 500 );
+</script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var cat = function(){
+
+    }
+    var way = function(){
+
+    }
+    cat.food = "fish";
+    way.prototype = cat;
+    var run = new way();
+    console.log(run.food);
+    console.log(way.__proto__.cat);
+</script>
+</body>
+</html>

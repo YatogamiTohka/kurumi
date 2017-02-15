@@ -3,12 +3,15 @@ body{
     font-size: 12px;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
 }
 .asidemenu{
     position: fixed;
     height: 80%;
     width: 200px;
     border-bottom: 1px solid #dddddd;
+    margin-top: 30px;
 }
 .asidemenu ul{
     width: 100%;
@@ -22,17 +25,37 @@ body{
     height: 30px;
     list-style: none;
     border-bottom: 1px solid #c1c1c1;
-    text-align: center;
+    text-align: left;
     line-height: 30px;
     cursor: pointer;
+    text-indent: 20px;
 }
 .asidemenu ul li:hover{
     background-color: #dddddd;
 }
 .index_nav{
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     border-bottom: 1px solid #dddddd;
     height: 30px;
     line-height: 30px;
+    display: block;
+    width: 100%;
+}
+
+a{
+    outline: none;
+}
+
+.main_content{
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+    right: 0;
+    top: 30px;
+    overflow-y: auto;
+    z-index: 100;
+    background-color: #FFFFF0;
 }
 
