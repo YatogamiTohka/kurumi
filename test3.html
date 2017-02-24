@@ -3,20 +3,13 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <script src="lib/underscore/underscore.js"></script>
 </head>
 <body>
 <script>
-    var cat = function(){
-
-    }
-    var way = function(){
-
-    }
-    cat.food = "fish";
-    way.prototype = cat;
-    var run = new way();
-    console.log(run.food);
-    console.log(way.__proto__.cat);
+    var cat = "一、变更内容 二、变更影响范围三、变更步骤 四、验证方法 五、回退方案";
+    var way = cat.slice(0,cat.indexOf("三、"))+ "aaabbbcc"+cat.slice(cat.indexOf("三、"),cat.length);
+    console.log(way);
 </script>
 </body>
 </html>
