@@ -10,7 +10,9 @@ $(function(){
     Global.prototype.asideMenu = function(){
         var urls = [
             {"url":"collection",name:"url"},
-            {"url":"forget",name:"forget"}
+            {"url":"forget",name:"forget"},
+            {"url":"tree",name:"tree"},
+            {"url":"virtual",name:"virtual"}
         ];
         var liStr = "";
         urls.forEach(function(d){

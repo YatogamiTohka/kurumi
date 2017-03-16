@@ -25,13 +25,13 @@ $(function(){
             {"url":"http://www.css88.com/book/css/properties/user-interface/outline.htm",name:"pointer-events - CSS3参考手册"},
             {"url":"http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html",name:"深入理解JavaScript系列 - 汤姆大叔 - 博客园"},
             {"url":"http://www.w3cplus.com/",name:"w3cplus"},
-            {"url":"http://www.wallpaperbetter.com/tag/cat-wallpaper",name:"wallpaperbetter"},
             {"url":"http://www.cnblogs.com/coco1s/p/6253154.html",name:"谈谈一些有趣的CSS题目（十二）-- 你该知道的字体 font-family - ChokCoco - 博客园"},
             {"url":"http://www.cnblogs.com/grey-zhou/p/6377560.html",name:"《javascript设计模式与开发实践》阅读笔记（15）—— 装饰者模式 - 出世Sunny - 博客园"},
             {"url":"http://jo2.org/html5-canvas-tutorial-list/",name:"html5 Canvas画图教程2：最简单的画线条 - 脚儿网"},
             {"url":"https://zhuanlan.zhihu.com/vczh-nichijou",name:"vczh的日常 - 知乎专栏"},
             {"url":"https://github.com/llh911001/mostly-adequate-guide-chinese",name:"llh911001/mostly-adequate-guide-chinese: JS函数式编程指南中文版"},
-            {"url":" http://www.wallpaperbetter.com/",name:"wallpaperbetter"}
+            {"url":" http://www.wallpaperbetter.com/",name:"wallpaperbetter"},
+            {"url":" https://output.jsbin.com/wubudog/",name:"练习"},
 
         ];
         var liStr = "";

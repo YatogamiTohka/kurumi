@@ -8,7 +8,10 @@
 </head>
 <body>
 <div id="divObj" style="width: 100px;height: 100px;background-color: #2196f3"></div>
+
+<embed id="emPlayer" src="./uc_js_controlx64.CAB#version=1,0,0,0" width='0'  height='0' type="application/x-ucjscontrol"></embed>
 <script>
+
     $("#divObj").click(function(){
         if(navigator.platform=="Win64"){
             document.getElementById("divObj").innerHTML="<object id='js_control_update'  classid='CLSID:BEB0EC17-0D42-455D-A1AE-996362AB84F2' codebase='./uc_js_controlx64.CAB#version=1,0,0,0' width='0'  height='0'></object>"

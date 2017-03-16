@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="lib/underscore/underscore.js"></script>
+    <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+    <script src="virtual.js"></script>
 </head>
 <body>
 <script>
-    var cat = "一、变更内容 二、变更影响范围三、变更步骤 四、验证方法 五、回退方案";
-    var way = cat.slice(0,cat.indexOf("三、"))+ "aaabbbcc"+cat.slice(cat.indexOf("三、"),cat.length);
-    console.log(way);
+    var count = 0
+
+    function renderTree () {
+        count++
+        var items = []
+        var color = (count % 2 === 0)
+                ? 'blue'
+                : 'red'
+
+        for (var i = 0; i < count; i++) {
+            items.push(Element('li', ['Item #' + i]))
+        }
+        return Element('div', {'id': 'container'}, [
+            Element('h1', {style: 'color: ' + color}, ['simple virtal dom']),
+            Element('p', ['the count is :' + count]),
+            Element('ul', items)
+        ])
+    }
+
+    var tree = renderTree();
+
+    var root = tree.render();
+    document.body.appendChild(root)
+
+    var _c = 0;
+    var _s = setInterval(function () {
+        _c++;
+        var newTree = renderTree();
+        var patches = diff(tree, newTree)
+        patch(root, patches);
+        tree = newTree
+        if(_c == 1){
+            clearInterval(_s);
+        }
+    }, 1000);
 </script>
 </body>
 </html>
