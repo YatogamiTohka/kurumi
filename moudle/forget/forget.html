@@ -1,3 +1,79 @@
 <div id="main">
-    <textarea cols="100" rows="30"></textarea>
+    <textarea>
+        var sine = function(x){
+            return [Math.sin(x),"sine is called "];
+        }
+        var cube = function(x){
+            return [x*x*x,"cube is called"];
+        }
+        var compose = function(f,g){
+            return function(x){
+                return f(g(x));
+            }
+        }
+        var composeDebuggable = function(f, g) {
+            return function(x){
+                var gx = g(x),
+                y = gx[0],
+                s = gx[1],
+                fy = f(y),
+                z = fy[0],
+                t = fy[1]
+                return [z,s + t]
+            }
+        }
+        var bind = function(f){
+            return function(tuple){
+                var x = tuple[0],
+                s = tuple[1],
+                fx = f(x),
+                y = fx[0],
+                t = fx[1]
+                return [y, s + t]
+            }
+        }
+        var unit = function(x){
+            return [x,""];
+        }
+        var lift = function(f){
+            return function(x){
+                unit(f(x));
+            }
+        }
+
+        console.log(bind(sine)([27, "haha cube is called"]))
+
+        var sineOfCube = compose(bind(sine),bind(cube))(unit(3));
+        console.log(sineOfCube);
+
+        var children = function(node) {
+            var children = node.childNodes, ary = [];
+            for (var i = 0, n = children.length; i < n; i++) {
+                ary[i] = children[i];
+            }
+            return ary;
+        };
+
+        var unit = function(x) { return [x] };
+
+        var bindE = function(f) {
+            return function(list) {
+                var output = [];
+                //console.log(list);
+                if(list.length > 0){
+                    for (var i = 0, n = list.length; i < n; i++) {
+                        console.log(f(list[i]));
+                        output = output.concat(f(list[i]));
+                    }
+                }
+
+                //console.log(output);
+                return output;
+            };
+        };
+
+        var heading = document.getElementsByTagName('div')[0];
+        var grandchildren = compose(bindE(children), bindE(children));
+        console.log(grandchildren(unit(heading)));
+    </textarea>
 </div>

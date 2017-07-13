@@ -29,7 +29,7 @@ $(function(){
                 return [];
             }
             var list = [];
-            for (var i = 0, len = listLike.length; i < len; i++) {
+            for (var i = 0, len = arr.length; i < len; i++) {
                 list.push(arr[i]);
             }
             return list;
@@ -73,11 +73,13 @@ $(function(){
         this.key = props?props.key:void 666;
 
         var count = 0;
+
         _run.each(this.children, function (child, i) {
             if(child instanceof Element){
                 count += child.count;
+
             }else{
-                children[i] = ''+ d;
+                children[i] = ''+ child;
             }
             count++
         })
@@ -188,6 +190,11 @@ $(function(){
             moves.push(move);
         }
 
+        return {
+            moves: moves,
+            children: children
+        }
+
     }
 
 
@@ -207,7 +214,8 @@ $(function(){
             }else{
                 free.push(d);
             }
-        })
+        });
+        return {keyIndex:keyIndex,free:free}
     }
 
     function getItemKey(item,key){
@@ -232,6 +240,7 @@ $(function(){
 
     function dfsWalk(oldNode,newNode,index,patches){
         var currentPatch = [];
+
         if(newNode == null){
 
         }else if(_run.isString(oldNode) && _run.isString(newNode)){
@@ -400,44 +409,4 @@ $(function(){
             }
         })
     }
-
-    /**************end******************/
-
-    var count = 0
-
-    function renderTree () {
-        count++
-
-        var items = []
-        var color = (count % 2 === 0)
-            ? 'blue'
-            : 'red'
-
-        for (var i = 0; i < count; i++) {
-            items.push(new Element('li', ['Item #' + i]))
-        }
-
-        return new Element('div', {'id': 'container'}, [
-            new Element('h1', {style: 'color: ' + color}, ['simple virtal dom']),
-            new Element('p', ['the count is :' + count]),
-            new Element('ul', items)
-        ])
-    }
-
-    var tree = renderTree()
-    var root = tree.render()
-    document.body.appendChild(root)
-
-    setInterval(function () {
-        var newTree = renderTree()
-        var patches = diff(tree, newTree)
-        console.log(patches)
-        patch(root, patches)
-
-        tree = newTree
-    }, 1000)
-
-
-
-
 })

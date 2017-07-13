@@ -31,8 +31,7 @@ $(function(){
             {"url":"https://zhuanlan.zhihu.com/vczh-nichijou",name:"vczh的日常 - 知乎专栏"},
             {"url":"https://github.com/llh911001/mostly-adequate-guide-chinese",name:"llh911001/mostly-adequate-guide-chinese: JS函数式编程指南中文版"},
             {"url":" http://www.wallpaperbetter.com/",name:"wallpaperbetter"},
-            {"url":" https://output.jsbin.com/wubudog/",name:"练习"},
-
+            {"url":" https://output.jsbin.com/wubudog/",name:"练习"}
         ];
         var liStr = "";
         urls.forEach(function(d){
