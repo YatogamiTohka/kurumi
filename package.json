@@ -1,0 +1,23 @@
+{
+  "name": "kurumi",
+  "version": "1.0.0",
+  "description": "runzz",
+  "main": "virtual.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YatogamiTohka/kurumi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YatogamiTohka/kurumi/issues"
+  },
+  "homepage": "https://github.com/YatogamiTohka/kurumi#readme",
+  "devDependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.0.0"
+  }
+}

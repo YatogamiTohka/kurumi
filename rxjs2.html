@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rx for JavaScript Rocks!</title>
+    <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+    <script src="lib/rx/rx.min.js"></script>
+</head>
+<body>
+<button>好</button>
+<script>
+   /* var button = document.querySelector('button');
+    Rx.Observable.fromEvent(button, 'click')
+            .throttleTime(1000)
+            .map(event => event.clientX)
+            .scan((count, clientX) => count + clientX, 0)
+            .subscribe(count => console.log(count));
+
+    var observable = Rx.Observable.create(function(observer){
+        observer.next(1);
+        observer.next(2);
+        observer.next(3);
+        setTimeout(() => {
+            observer.next(4);
+            observer.complete();
+        },1000);
+    });
+
+    console.log('just before subscribe');
+
+    observable.subscribe({
+        next:x => console.log('got value ' + x),
+        error: err => console.error('something wrong occurred: ' + err),
+        complete:() => console.log('done')
+    });
+
+    console.log('just after subscribe');*/
+
+   /* var foo = Rx.Observable.create(function (observer) {
+        console.log('Hello');
+        observer.next(42);
+    });
+
+    foo.subscribe(function (x) {
+        console.log(x);
+    });
+    foo.subscribe(function (x) {
+        console.log(x);
+    });*/
+
+  /* var observable = Rx.Observable.create(function subscribe(observer) {
+       var id = setInterval(() => {
+           observer.next('hi')
+       }, 1000);
+   });
+   observable.subscribe(x => console.log(x));*/
+
+   var subscription = Rx.Observable.interval(500).take(4).subscribe(function (x) { console.log(x) });
+</script>
+</body>
+</html>

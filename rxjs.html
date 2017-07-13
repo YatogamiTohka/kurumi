@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rx for JavaScript Rocks!</title>
+    <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+    <script src="lib/rx/rx.lite.js"></script>
+    <!--<script src="lib/rx/rx.all.min.js"></script>-->
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/css/bootstrap-responsive.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>Simple Data Binding Example</h1>
+        <p class="lead">Show simple concepts of data binding!</p>
+    </div>
+    <div class="row-fluid">
+        <form>
+            <fieldset>
+                <legend>First Example Using Simple Binds</legend>
+                <label id="label1"></label>
+                <label for="firstName1">First Name</label>
+                <input id="firstName1" type="text" placeholder="Enter First Name...">
+                <label for="lastName1">Last Name</label>
+                <input id="lastName1" type="text" placeholder="Enter Last Name...">
+                <label for="fullName1">Full Name</label>
+                <input id="fullName1" type="text" readonly>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script>
+    $(function(){
+        var firstName1 = new Rx.BehaviorSubject("run");
+        var lastName1 = new Rx.BehaviorSubject("zz");
+
+        var fullName1 = firstName1.combineLatest(lastName1,function(first,last){
+            return first + "" + last;
+        });
+
+        var fn1 = document.querySelector("#firstName1");
+        firstName1.subscribe(function(text){fn1.value = text;});
+
+        var ln1 = document.querySelector('#lastName1');
+        lastName1.subscribe(function (text) { ln1.value = text });
+
+        var full1 = document.querySelector('#fullName1');
+        fullName1.subscribe(function (text) { full1.value = text });
+
+        Rx.Observable.fromEvent(fn1,"keyup").subscribe(function(e){
+            firstName1.onNext(e.target.value);
+        });
+
+        Rx.Observable.fromEvent(ln1,"keyup").subscribe(function(e){
+            lastName1.onNext(e.target.value);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="lib/require.min.js"></script>
+</head>
+<body>
+<script>
+    require.config({
+        paths: {
+            ramda: "lib/ramda",
+            jquery: "lib/jquery/jquery-1.11.1.min"
+        }
+    });
+    require(["ramda", "jquery"], function (_, $) {
+        /*var trace = _.curry(function (tag, x) {
+            console.log(tag, x);
+            return x;
+        });
+
+        var Impure = {
+            getJSON: _.curry(function (fn, url) {
+                $.getJSON(url, fn);
+            }),
+            setHtml: _.curry(function (sel, html) {
+                $(sel).html(html);
+            })
+        }
+
+        var img = function (url) {
+            return $("<img/>", {src: url});
+        }
+
+        var url = function (t) {
+            return 'img/a.jpg';
+        };
+
+        var mediaUrl = _.compose(_.prop('m'), _.prop('media'));
+
+        var images = _.compose(_.map(_.compose(img,mediaUrl)), _.prop('items'));
+
+        var renderImages = _.compose(Impure.setHtml("body"), images);
+
+        var app = _.compose(Impure.getJSON(renderImages), url);
+
+        app("cats");*/
+
+        var IO = function(f){
+            this.__value = f;
+        }
+
+        IO.of = function(x){
+            return new IO(function(){
+                return x;
+            });
+        }
+
+        IO.prototype.map = function(f){
+            return new IO(_.compose(f,this.__value));
+        }
+
+        var io_window = IO.of(window);
+
+        var w = io_window.map(function(win){
+            return win.innerWidth;
+        });
+
+        var h = io_window.map(_.prop("location")).map(_.prop("href")).map(_.split("/"));
+
+        console.log(h.__value());
+
+        !(function(){
+            function cat(){
+                console.log("this is a cat");
+            }
+            cat.cat = "cat";
+            var dog = function(){}
+            console.log(cat.hasOwnProperty("cat"));
+        })();
+
+    });
+</script>
+</body>
+</html>

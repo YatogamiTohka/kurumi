@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var Container = function(x) {
+        this.__value = x;
+    }
+
+    Container.of = function(x) {
+        return new Container(x);
+    };
+
+    Container.prototype.map = function(f){
+        return Container.of(f(this.__value))
+    }
+
+    var dog = "flamethrowers";
+
+    var cat = Container.of("flamethrowers").map(function(s){
+        return s.toUpperCase();
+    });
+
+    console.log(dog);
+</script>
+</body>
+</html>
