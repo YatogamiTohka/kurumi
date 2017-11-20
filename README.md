@@ -1,2 +1,2 @@
 # kurumi
-向run神学习！！！！
+向runzz学习！！！！
